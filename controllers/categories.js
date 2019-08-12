@@ -7,7 +7,7 @@ const handleCategoriesGet = (req,res,db) => {
 
 const handleAddCategory = (req,res,db) => {
     const category = req.body;
-    console.log('category received: ', product)
+    console.log('category received: ', category)
     //take input value and add to db
     db('category').returning('*').insert({
         category_name: category.name,
