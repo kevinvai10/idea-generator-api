@@ -1,8 +1,6 @@
 const handleProductsGet = (req,res,db) => {
-    db.select(['product.id', 'product.name', 'product.price', 'store.store_name', 'category.category_name']).returning('*')
+    db.select(['product.id', 'product.name', 'product.price']).returning('*')
             .from('product')
-            .innerJoin('store', 'store.id', '=', 'product.store_id')
-            .innerJoin('category', 'category.id', '=', 'product.category_id')
             .orderBy('product.name')
             .then(data => res.json(data))
 }
