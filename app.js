@@ -6,13 +6,21 @@ const product = require('./controllers/products');
 const store = require('./controllers/stores');
 const category = require('./controllers/categories');
 //define db
-const db = knex({
+/*const db = knex({
     client: 'pg',
     connection: {
         host : '127.0.0.1',
         user : '',
         password : '',
         database : 'shopping-prices'
+    }
+})*/
+
+const db = knex({
+    client: 'pg',
+    connection: {
+        host : process.env.DATABASE_URL,
+        ssl: true
     }
 })
 // backend logic
