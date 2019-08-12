@@ -38,6 +38,7 @@ app.get('/stores', (req,res) => store.handleStoresGet(req,res,db))
                         //POST REQUESTS
 //------------------------------------------------------------------
 app.post('/addproduct', (req,res) => product.handleAddProduct(req,res,db))
+app.post('/addcategory', (req,res) => category.handleAddCategory(req,res,db))
 //------------------------------------------------------------------
                         //PUT REQUESTS
 //------------------------------------------------------------------
