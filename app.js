@@ -39,7 +39,7 @@ app.put('/edit', (req,res) => product.handleProductEdit(req,res,db))
 //------------------------------------------------------------------
 app.delete('/delete', (req,res) => product.handleDeleteProduct(req,res,db))
 
-app.listen(3002, () => {
-    console.log('listening on port 3002')
+app.listen(process.env.PORT || 3000, () => {
+    console.log(`listening on port ${process.env.PORT}`)
 })
 
