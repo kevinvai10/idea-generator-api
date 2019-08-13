@@ -1,10 +1,14 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const bcrypt = require('bcrypt-nodejs');
 const knex = require('knex');
 const cors = require('cors');
-const product = require('./controllers/products');
-const store = require('./controllers/stores');
+
 const category = require('./controllers/categories');
+const product = require('./controllers/products');
+const register = require('./controllers/register');
+const store = require('./controllers/stores');
+const signin = require('./controllers/signin');
 //define db
 const db = knex({
     client: 'pg',
@@ -40,6 +44,8 @@ app.get('/stores', (req,res) => store.handleStoresGet(req,res,db))
 app.post('/addproduct', (req,res) => product.handleAddProduct(req,res,db))
 app.post('/addcategory', (req,res) => category.handleAddCategory(req,res,db))
 app.post('/addstore', (req,res) => store.handleAddStore(req,res,db))
+app.post('/register', (req, res) => { register.handleRegister(req, res, db, bcrypt) })
+app.post('/signin', signin.handleSignin(db, bcrypt))
 //------------------------------------------------------------------
                         //PUT REQUESTS
 //------------------------------------------------------------------
@@ -50,6 +56,6 @@ app.put('/edit', (req,res) => product.handleProductEdit(req,res,db))
 app.delete('/delete', (req,res) => product.handleDeleteProduct(req,res,db))
 
 app.listen(3002, () => {
-    console.log(`listening on port ${process.env.PORT}`)
+    console.log(`listening on port 3002`)
 })
 
