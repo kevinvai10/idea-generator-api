@@ -10,7 +10,7 @@ const register = require('./controllers/register');
 const store = require('./controllers/stores');
 const signin = require('./controllers/signin');
 //define db
-const db = knex({
+/*const db = knex({
     client: 'pg',
     connection: {
         host : '127.0.0.1',
@@ -18,15 +18,15 @@ const db = knex({
         password : '',
         database : 'shopping-prices'
     }
-})
+})*/
 
-/*const db = knex({
+const db = knex({
     client: 'pg',
     connection: {
         connectionString : process.env.DATABASE_URL,
         ssl: true
     }
-})*/
+})
 // backend logic
 const app = express();
 app.use(bodyParser.json());
