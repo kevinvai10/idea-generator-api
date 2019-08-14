@@ -3,22 +3,11 @@ const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt-nodejs');
 const knex = require('knex');
 const cors = require('cors');
-
 const category = require('./controllers/categories');
 const product = require('./controllers/products');
 const register = require('./controllers/register');
 const store = require('./controllers/stores');
 const signin = require('./controllers/signin');
-//define db
-/*const db = knex({
-    client: 'pg',
-    connection: {
-        host : '127.0.0.1',
-        user : '',
-        password : '',
-        database : 'shopping-prices'
-    }
-})*/
 
 const db = knex({
     client: 'pg',
@@ -27,7 +16,7 @@ const db = knex({
         ssl: true
     }
 })
-// backend logic
+
 const app = express();
 app.use(bodyParser.json());
 app.use(cors())

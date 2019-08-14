@@ -6,7 +6,6 @@ const handleStoresGet = (req,res,db) => {
 
 const handleAddStore = (req,res,db) => {
     const store = req.body;
-    console.log('category received: ', store)
     //take input value and add to db
     db('store').returning('*').insert({
         store_name: store.name,
@@ -14,7 +13,6 @@ const handleAddStore = (req,res,db) => {
         closes_at: '23:00',
         date_added: new Date(),
     }).then(response => {
-        console.log('we had a response');
         res.json(response)
     }).catch(err => res.status(400).json('unable to add'))
 }
